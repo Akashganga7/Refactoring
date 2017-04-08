@@ -13,18 +13,23 @@ public class Refactor {
 		printBanner();
 		
 		// calculate outstanding
-		while(e.hasMoreElements())
-		{
-			Order each = (Order) e.nextElement();
-			outstanding += each.getAmount();
-			
-		}
+		outstanding = calculateOutstanding(e, outstanding);
 		
 		// print details 
 		
 		System.out.println("name: " + name);
 		System.out.println("amount: " + outstanding);
 
+	}
+
+	public double calculateOutstanding(Enumeration<E> e, double outstanding) {
+		while(e.hasMoreElements())
+		{
+			Order each = (Order) e.nextElement();
+			outstanding += each.getAmount();
+			
+		}
+		return outstanding;
 	}
 
 	private void printBanner() {
